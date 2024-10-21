@@ -62,6 +62,8 @@ namespace ILRuntime.Runtime.Generated
             TestDelegateFunction_Binding.Register(app);
             System_Action_1_String_Binding.Register(app);
             DelegateDemo_Binding.Register(app);
+            JSONObject_Binding.Register(app);
+            Data_Binding.Register(app);
             System_Collections_Generic_List_1_Int32_Binding.Register(app);
 
             ILRuntime.CLR.TypeSystem.CLRType __clrType = null;

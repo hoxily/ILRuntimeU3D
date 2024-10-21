@@ -28,6 +28,22 @@ namespace HotFix_Project
         public static void StaticFunTest()
         {
             UnityEngine.Debug.Log("!!! InstanceClass.StaticFunTest()");
+
+            try
+            {
+                JSONObject json = new JSONObject();
+                Data data = new Data();
+
+                json.GetField(out data._int_value, nameof(data._int_value), 0);
+                UnityEngine.Debug.Log("parse int value success.");
+                json.GetField(out data._bool_value, nameof(data._bool_value), false);
+                UnityEngine.Debug.Log("parse bool value success.");
+            }
+            catch (Exception e)
+            {
+                UnityEngine.Debug.LogError("parse data error.");
+                UnityEngine.Debug.LogException(e);
+            }
         }
 
         public static void StaticFunTest2(int a)
