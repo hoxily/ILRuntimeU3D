@@ -1559,7 +1559,7 @@ namespace ILRuntime.Runtime.Intepreter
                                 }
                                 break;
                             case OpCodeEnum.Beq:
-                            case OpCodeEnum.Beq_S:
+                            case OpCodeEnum.Beq_S: //相比 Ceq_S 指令，Beq_S 指令省略了 a->ObjectType != b->ObjectType，即 ObjectTypes.Null型null 与 ObjectTypes.Object型null 的比对。
                                 {
                                     b = esp - 1;
                                     a = esp - 2;

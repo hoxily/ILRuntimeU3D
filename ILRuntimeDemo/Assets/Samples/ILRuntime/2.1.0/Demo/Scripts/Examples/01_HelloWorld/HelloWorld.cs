@@ -79,7 +79,6 @@ public class HelloWorld : MonoBehaviour
     {
         //HelloWorld，第一次方法调用
         appdomain.Invoke("HotFix_Project.InstanceClass", "StaticFunTest", null, null);
-
     }
 
     private void OnDestroy()
@@ -96,4 +95,23 @@ public class HelloWorld : MonoBehaviour
     {
 
     }
+
+    public void Setup(MainProject_Data data)
+    {
+        _data = data;
+    }
+
+    private MainProject_Data _data;
+
+    public MainProject_Data GetData()
+    {
+        return _data;
+    }
+}
+
+[System.Serializable]
+public class MainProject_Data
+{
+    public int id;
+    public string name;
 }
