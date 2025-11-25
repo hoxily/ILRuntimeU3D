@@ -96,7 +96,7 @@ namespace ILRuntime.Runtime.Enviorment
             if (foundSetting != null)
             {
                 List<KeyValuePair<string, string>> assembliesToModify = new List<KeyValuePair<string, string>>();
-                if (report.GetFiles() != null)
+                if (report.files != null)
                 {
 #if UNITY_2022_1_OR_NEWER
                     foreach (var file in report.GetFiles()) // BuildFile 类型
