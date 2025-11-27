@@ -29,6 +29,13 @@ namespace HotFix_Project
         {
             UnityEngine.Debug.Log("!!! InstanceClass.StaticFunTest()");
             HelloWorld hello = GameObject.FindObjectOfType<HelloWorld>();
+
+            //输出是否Debug模式，方便对比。
+#if DEBUG
+            Debug.Log("in Debug mode.");
+#else
+            Debug.Log("in Release mode.");
+#endif
             TestNullCompareBug(hello);
         }
 

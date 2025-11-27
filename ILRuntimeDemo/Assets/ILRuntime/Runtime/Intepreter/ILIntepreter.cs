@@ -1559,7 +1559,7 @@ namespace ILRuntime.Runtime.Intepreter
                                 }
                                 break;
                             case OpCodeEnum.Beq:
-                            case OpCodeEnum.Beq_S: //相比 Ceq_S 指令，Beq_S 指令省略了 a->ObjectType != b->ObjectType，即 ObjectTypes.Null型null 与 ObjectTypes.Object型null 的比对。
+                            case OpCodeEnum.Beq_S:
                                 {
                                     b = esp - 1;
                                     a = esp - 2;
@@ -1588,6 +1588,20 @@ namespace ILRuntime.Runtime.Intepreter
                                                 break;
                                             default:
                                                 throw new NotImplementedException();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        //相比 Ceq_S 指令，Beq_S 指令省略了 a->ObjectType != b->ObjectType，即 ObjectTypes.Null型null 与 ObjectTypes.Object型null 的比对。
+                                        //修改记录2025-11-26: 参考 OpCodeEnum.Ceq 实现，else分支需要判断ObjectTypes.Object型null与ObjectTypes.Null型null。
+                                        switch (a->ObjectType)
+                                        {
+                                            case ObjectTypes.Object:
+                                                transfer = mStack[a->Value] == null && b->ObjectType == ObjectTypes.Null;
+                                                break;
+                                            case ObjectTypes.Null:
+                                                transfer = b->ObjectType == ObjectTypes.Object && mStack[b->Value] == null;
+                                                break;
                                         }
                                     }
                                     Free(esp - 1);
